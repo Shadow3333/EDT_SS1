@@ -21,20 +21,20 @@ import models.UE;
 public class EUsController {
 
 	ManagerEUs euM;
-	UE eu = new UE();
-	List<UE> eus;
+	@Autowired
+	UE theEU;
 	
 	public EUsController (){
 		euM = new ManagerEUs();
-		eu = new UE();
-		eus = new ArrayList<UE>();
+		theEU = new UE();
 	}
 	
 	
 
 
-	public String save(UE ue) {
-			euM.add(ue);
+	public String save() {
+			euM.add(theEU);
+			theEU.reset();
 			return "eus";
 	}
 	
@@ -45,16 +45,15 @@ public class EUsController {
 
 	
 	public List<UE> findAll(){
-		eus = euM.findAll();
 		System.out.println("debut");
-		for (UE ue : eus) {
-			System.out.println(eu.getName());
+		for (UE ue : euM.findAll()) {
+			System.out.println(ue.getName());
 		}
-		return eus;
+		return euM.findAll();
 	}
 	
 	public String show(String id) {
-		eu = euM.find(id);
+		theEU = euM.find(id);
 		return "showPerson";
 	}
 	
@@ -69,21 +68,12 @@ public class EUsController {
 		this.euM = euM;
 	}
 	
-	
-	public List<UE> getEus() {
-		return eus;
+	public UE getTheEU() {
+		return theEU;
+	}
+
+	public void setTheEU(UE theEU) {
+		this.theEU = theEU;
 	}
 	
-	public void setEus(ArrayList<UE> eus) {
-		this.eus = eus;
-	}
-	
-	public UE getEu() {
-		return eu;
-	}
-	
-	
-	public void setEu(UE eu) {
-		this.eu = eu;
-	}
 }

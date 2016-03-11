@@ -27,7 +27,7 @@
 				<h:messages id="msgs" />
 
 				<h:form id="test">
-					<c:set var="eu" value="#{euController.eu}" />
+					<c:set var="eu" value="#{euController.theEU}" />
 
 					<p:panelGrid columns="2">
 					
@@ -51,7 +51,7 @@
 					<h:message style="color:red" for="nbCredits" />
 					<tr>
 						<td colspan="2">
-							<h:commandButton action="#{euController.save(eu)}" value="Save" />
+							<h:commandButton action="#{euController.save()}" value="Save" />
 						</td>
 					</tr>
 				</h:form>

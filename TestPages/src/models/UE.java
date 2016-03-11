@@ -88,5 +88,21 @@ public class UE {
 	public void setNbHours(Map<LessonType, Integer> nbHours) {
 		this.nbHours = nbHours;
 	}
+	
+	public void reset()
+	{
+		this.id = null;
+		this.name = null;
+		this.description = null;
+		this.nbCredits = null;
+	}
+	
+	public void copy(UE ue)
+	{
+		this.name = ue.name;
+		this.id = ue.id;
+		this.description = ue.description;
+		this.nbCredits = ue.nbCredits;
+	}
 
 }

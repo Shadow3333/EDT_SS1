@@ -23,7 +23,9 @@ public class ManagerEUs {
 	}
 
 	public void add (UE ue){
-		eus.add(ue);
+		UE eu = new UE();
+		eu.copy(ue);
+		eus.add(eu);
 	}
 	
 	public void remove (UE ue){
