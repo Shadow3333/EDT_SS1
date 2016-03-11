@@ -9,7 +9,7 @@ import models.User;
 public class UserController {
 	
 	UserManager userM = new UserManager();
-	User user = new User();
+	User thPerson = new User();
 	
 	List<User> users = new ArrayList<User>();
 	
@@ -18,7 +18,7 @@ public class UserController {
 	}
 	
 	public void save(User user){
-		this.user = user;
+		this.thPerson = user;
 		userM.add(user);
 	}
 	
