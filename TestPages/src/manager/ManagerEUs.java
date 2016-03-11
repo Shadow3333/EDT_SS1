@@ -13,13 +13,26 @@ import models.UE;
 
 public class ManagerEUs {
 	
-	UE eu = new UE();
+
 	List<UE> eus = new ArrayList<UE>();
 	
 	/**
 	 * @param dao
 	 */
 	public ManagerEUs() {
+		UE ue1 = new UE();
+		ue1.setId("aze");
+		ue1.setName("aze");
+		ue1.setDescription("aze");
+		ue1.setNbCredits(23);
+		
+		UE ue2 = new UE();
+		ue2.setId("azeaze");
+		ue2.setName("azeaze");
+		ue2.setDescription("azeaze");
+		ue2.setNbCredits(852);
+		eus.add(ue2);
+		eus.add(ue1);
 	}
 
 	public void add (UE ue){
@@ -29,7 +42,7 @@ public class ManagerEUs {
 	}
 	
 	public void remove (UE ue){
-		eus.remove(eu);
+		eus.remove(ue);
 	}
 	
 	public List<UE> findAll (){

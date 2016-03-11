@@ -1,6 +1,5 @@
 package controler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -39,16 +38,14 @@ public class EUsController {
 	}
 	
 	public String delete(UE ue) {
+		System.out.println("test");
 		euM.remove(ue);
+		System.out.println(ue.getName());
 		return "eus";
 }
-
+		
 	
 	public List<UE> findAll(){
-		System.out.println("debut");
-		for (UE ue : euM.findAll()) {
-			System.out.println(ue.getName());
-		}
 		return euM.findAll();
 	}
 	
