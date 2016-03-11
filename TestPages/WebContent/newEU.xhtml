@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<head>
+
+<title>Ajouter UE</title>
+
+</head>
+
+<body>
+	<ui:composition template="/template/myLayout.xhtml">
+		<ui:define name="content">
+			<f:view>
+				<h1>Modifier votre profil</h1>
+				<h:messages id="msgs" />
+
+				<h:form id="test">
+					<c:set var="eu" value="#{euController.eu}" />
+					<p:panelGrid columns="3">
+
+
+		Nom : 
+		<h:inputText id="name" value="#{eu.name}" required="true"
+							requiredMessage=" Le nom est obligatoire." label="lastName">
+						</h:inputText>
+
+            Description : 
+			<h:inputText id="description" value="#{eu.description}"
+							label="firstName" required="true"
+							requiredMessage=" Le prénom est obligatoire.">
+						</h:inputText>
+						
+            Nombre de credits : 
+            <h:inputText id="nbCredits" value="#{eu.nbCredits}"
+							required="true"
+							requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa.">
+						</h:inputText>
+						<h:message style="color:red" for="nbCredits" />
+					</p:panelGrid>
+					<tr>
+						<td colspan="2"><h:commandButton
+								action="#{euController.save(eu)}" value="Save" /></td>
+					</tr>
+				</h:form>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+
+</html>

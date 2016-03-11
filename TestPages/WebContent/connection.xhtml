@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="/template/myLayout.xhtml">
+		<ui:define name="content">
+			<f:view>
+				<h1>Connexion</h1>
+				<p:messages id="msgs" />
+
+				<h:form id="test">
+					<p:panelGrid columns="3" id="matchGrid" cellpadding="30">
+					           
+				<p:outputLabel for="mail" value="Adresse Mail" />
+	            <p:inputText id="mail" value="#{person.thePerson.mail}"
+							required="true"
+							requiredMessage=" L'adresse mail est obligatoire. ">
+							<f:validateLength minimum="5" />
+							<p:ajax update="msgMail" event="keyup" />
+						</p:inputText>
+						<p:message for="mail" id="msgMail" display="icon" />     
+				
+					<p:outputLabel for="pwd" value="Mot de passe" />
+					<p:password id="pwd" value="#{person.thePerson.password}" required="true"
+							requiredMessage="Veuillez entrer votre mot de passe. "
+							label="Password">
+							<f:validateLength minimum="6" />
+							<p:ajax update="msgPassword" event="keyup" />
+						</p:password>
+						<p:message for="mail" id="msgPassword" display="icon" />
+					</p:panelGrid>
+					<p:commandButton value="Se connecter" id="connection"
+						action="#{person.connect()}" styleClass="ui-priority-primary">
+					</p:commandButton>
+				</h:form>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
