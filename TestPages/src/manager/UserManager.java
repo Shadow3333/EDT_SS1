@@ -22,6 +22,6 @@ public class UserManager {
 		return users;
 	}
 	
-	public User find()
+	public User find(){return null;}
 	
 }
