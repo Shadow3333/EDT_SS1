@@ -3,6 +3,8 @@ package controler;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import manager.UserManager;
 import models.User;
 
@@ -26,7 +28,15 @@ public class UserController {
 		userM.delete(user);
 	}
 	
-	
+	/***
+	 * This method returns a person's with no mail.
+	 * @return a person
+	 */
+	@ModelAttribute("person")
+	public User getMail() {
+		User p = new User();
+		return p;
+	}
 
 	
 }
