@@ -3,7 +3,7 @@ package models;
 import java.util.Map;
 
 
-public class UE {
+public class EU {
 	
 	public static enum LessonType {
 		TD,
@@ -97,12 +97,12 @@ public class UE {
 		this.nbCredits = null;
 	}
 	
-	public void copy(UE ue)
+	public void copy(EU ue)
 	{
-		this.name = ue.name;
-		this.id = ue.id;
-		this.description = ue.description;
-		this.nbCredits = ue.nbCredits;
+		this.name = ue.getName();
+		this.id = ue.getId();
+		this.description = ue.getDescription();
+		this.nbCredits = ue.getNbCredits();
 	}
 
 }

@@ -15,7 +15,7 @@
 
 <head>
 
-<title>Ajouter UE</title>
+<title>Add EU</title>
 
 </head>
 
@@ -23,8 +23,7 @@
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				<h1>Modifier votre profil</h1>
-				<h:messages id="msgs" />
+				<h1>Add a teaching unit</h1>
 
 				<h:form id="test">
 					<c:set var="eu" value="#{euController.theEU}" />
@@ -48,7 +47,6 @@
 								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
 								     
 					</p:panelGrid>
-					<h:message style="color:red" for="nbCredits" />
 					<tr>
 						<td colspan="2">
 							<h:commandButton action="#{euController.save()}" value="Save" />

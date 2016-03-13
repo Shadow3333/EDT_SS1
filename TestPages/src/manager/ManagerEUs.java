@@ -3,7 +3,7 @@ package manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.UE;
+import models.EU;
 
 
 /**
@@ -14,19 +14,19 @@ import models.UE;
 public class ManagerEUs {
 	
 
-	List<UE> eus = new ArrayList<UE>();
+	List<EU> eus = new ArrayList<EU>();
 	
 	/**
 	 * @param dao
 	 */
 	public ManagerEUs() {
-		UE ue1 = new UE();
+		EU ue1 = new EU();
 		ue1.setId("aze");
 		ue1.setName("aze");
 		ue1.setDescription("aze");
 		ue1.setNbCredits(23);
 		
-		UE ue2 = new UE();
+		EU ue2 = new EU();
 		ue2.setId("azeaze");
 		ue2.setName("azeaze");
 		ue2.setDescription("azeaze");
@@ -35,22 +35,22 @@ public class ManagerEUs {
 		eus.add(ue1);
 	}
 
-	public void add (UE ue){
-		UE eu = new UE();
+	public void add (EU ue){
+		EU eu = new EU();
 		eu.copy(ue);
 		eus.add(eu);
 	}
 	
-	public void remove (UE ue){
+	public void remove (EU ue){
 		eus.remove(ue);
 	}
 	
-	public List<UE> findAll (){
+	public List<EU> findAll (){
 		return eus;
 	}
 	
-	public UE find (String id){
-		for ( UE ue : eus){
+	public EU find (String id){
+		for ( EU ue : eus){
 			if (ue.getId() == id)
 				return ue;
 		}

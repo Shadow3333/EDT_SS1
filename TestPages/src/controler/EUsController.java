@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import manager.ManagerEUs;
-import models.UE;
+import models.EU;
 
 /**
  * 
@@ -20,12 +20,11 @@ import models.UE;
 public class EUsController {
 
 	ManagerEUs euM;
-	@Autowired
-	UE theEU;
+	EU theEU;
 	
 	public EUsController (){
 		euM = new ManagerEUs();
-		theEU = new UE();
+		theEU = new EU();
 	}
 	
 	
@@ -37,7 +36,7 @@ public class EUsController {
 			return "eus";
 	}
 	
-	public String delete(UE ue) {
+	public String delete(EU ue) {
 		System.out.println("test");
 		euM.remove(ue);
 		System.out.println(ue.getName());
@@ -45,7 +44,7 @@ public class EUsController {
 }
 		
 	
-	public List<UE> findAll(){
+	public List<EU> findAll(){
 		return euM.findAll();
 	}
 	
@@ -65,11 +64,11 @@ public class EUsController {
 		this.euM = euM;
 	}
 	
-	public UE getTheEU() {
+	public EU getTheEU() {
 		return theEU;
 	}
 
-	public void setTheEU(UE theEU) {
+	public void setTheEU(EU theEU) {
 		this.theEU = theEU;
 	}
 	

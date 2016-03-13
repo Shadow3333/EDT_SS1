@@ -3,6 +3,7 @@ package manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.AbstractUser;
 import models.User;
 
 public class UserManager {
@@ -10,8 +11,10 @@ public class UserManager {
 	User user = new User();
 	List<User> users = new ArrayList<User>();
 	
-	public void add (User user){
-		users.add(user);
+	public void add (AbstractUser user){
+		User useTempo = new User();
+		useTempo.copy(user);
+		users.add(useTempo);
 	}
 
 	public void delete (User user){
