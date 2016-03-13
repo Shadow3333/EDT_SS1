@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<head>
+
+<title>Add User</title>
+
+</head>
+
+<body>
+	<ui:composition template="/template/myLayout.xhtml">
+		<ui:define name="content">
+			<f:view>
+				<h1>Add an User</h1>
+
+				<h:form id="test">
+					<div id="methode">
+						<ui:insert name="user">
+							<c:set var="user" value="#{UserController.theUser}" />
+						</ui:insert>
+						<h:messages />
+					</div>
+					
+
+					<p:panelGrid columns="2">
+					
+						<h:outputText>Name :</h:outputText>
+						<p:inputText id="lastName" value="#{user.lastName}" required="true"
+						             requiredMessage=" Le nom est obligatoire."/>
+						             
+						<h:outputText>First name :</h:outputText>
+						<p:inputText id="firstName" value="#{user.firstName}" required="true"
+						             requiredMessage=" Le nom est obligatoire."/>
+						 
+						<h:outputText>Birthday :</h:outputText>
+						<p:inputText id="birthDate" value="#{user.birthDate}" required="true"
+									 requiredMessage=" Le prénom est obligatoire.">
+									 
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+						</p:inputText>
+									 
+						<h:outputText>Mail :</h:outputText>
+	            		<p:inputText id="email" value="#{user.email}" required="true"
+								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+								     
+						
+								     
+						<h:outputText>Website :</h:outputText>
+	            		<p:inputText id="webSite" value="#{user.webSite}" required="true"
+								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+								     
+						<h:outputText>Password :</h:outputText>
+       					<p:inputText id="hashPwd" value="#{user.hashPwd}" type="password" required="true"
+								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+						
+						<h:outputText>Role :</h:outputText>
+						<p:selectOneMenu value="#{UserController.role}">
+							<f:selectItems value="#{UserController.getRoles()}" />
+						</p:selectOneMenu>
+								     
+					</p:panelGrid>
+					<div id="methode">
+						<ui:insert name="methode">
+							<p>methode</p>
+						</ui:insert>
+						<h:messages />
+					</div>
+				</h:form>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+
+</html>

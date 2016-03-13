@@ -38,7 +38,6 @@ public abstract class AbstractUser {
 	}
 	
 	@Id
-	@Email
 	private String email;
 	@Column(nullable = false)
 	private String hashPwd;

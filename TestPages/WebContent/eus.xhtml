@@ -12,7 +12,7 @@
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				<h1>Liste des ues</h1>
+				<h1>Teaching Unit List</h1>
 
 				<p:dataTable id="table" value="#{euController.findAll()}" var="p">
 					<p:column headerText="Nom">
@@ -28,8 +28,8 @@
 					</p:column>
 					<p:column headerText="Supprimer">
 						<h:form>
-							<p:commandButton value="Supprimer" id="supprimer"
-								action="#{euController.delete(p)}" update="table"
+							<p:commandButton value="X" id="supprimer"
+								action="#{euController.remove(p)}" update="table"
 								styleClass="ui-priority-primary" />
 						</h:form>
 					</p:column>

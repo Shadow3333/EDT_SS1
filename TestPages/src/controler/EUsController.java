@@ -5,8 +5,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import manager.ManagerEUs;
 import models.EU;
 
@@ -36,7 +34,7 @@ public class EUsController {
 			return "eus";
 	}
 	
-	public String delete(EU ue) {
+	public String remove(EU ue) {
 		System.out.println("test");
 		euM.remove(ue);
 		System.out.println(ue.getName());

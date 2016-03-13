@@ -12,24 +12,41 @@
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				<h1>Liste des ues</h1>
+				<h1>User List</h1>
 
-				<p:dataTable id="table" value="#{euController.findAll()}" var="p">
-					<p:column headerText="Nom">
-						<h:outputText value="#{p.name}" />
+				<p:dataTable id="table" value="#{UserController.findAll()}" var="p">
+					<p:column headerText="Name">
+						<h:outputText value="#{p.lastName}" />
 					</p:column>
 
-					<p:column headerText="Description">
-						<h:outputText value="#{p.description}" />
+					<p:column headerText="Fist name">
+						<h:outputText value="#{p.firstName}" />
 					</p:column>
 
-					<p:column headerText="Nombre de crédits">
-						<h:outputText value="#{p.nbCredits}" />
+					<p:column headerText="Birthday">
+						<h:outputText value="#{UserController.getFormattedDate(p.birthDate)}" />
 					</p:column>
+					
+					<p:column headerText="Web site">
+						<h:outputText value="#{p.webSite}" />
+					</p:column>
+					
+					<p:column headerText="Role">
+						<h:outputText value="#{UserController.getRole(p)}" />
+					</p:column>
+					
+					<p:column headerText="Edit">
+						<h:form>
+							<p:commandButton value="E" id="edit"
+								action="#{UserController.show(p)}"
+								styleClass="ui-priority-primary" />
+						</h:form>
+					</p:column>
+					
 					<p:column headerText="Supprimer">
 						<h:form>
-							<p:commandButton value="Supprimer" id="supprimer"
-								action="#{euController.delete(p)}" update="table"
+							<p:commandButton value="X" id="supprimer"
+								action="#{UserController.remove(p)}" update="table"
 								styleClass="ui-priority-primary" />
 						</h:form>
 					</p:column>

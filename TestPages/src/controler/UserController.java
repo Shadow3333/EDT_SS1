@@ -1,17 +1,20 @@
 package controler;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import manager.UserManager;
+import models.AbstractUser;
 import models.Admin;
 import models.Student;
 import models.Teacher;
 import models.User;
-import util.UserType;
+import util.Role;
 
 @ManagedBean(name = "UserController")
 @SessionScoped
@@ -19,7 +22,7 @@ public class UserController {
 	
 	UserManager userM;
 	User theUser;
-	String userT;
+	String role;
 	
 	List<User> users = new ArrayList<User>();
 	
@@ -28,54 +31,95 @@ public class UserController {
 		theUser = new User();
 	}
 	
-	public void save(){
-		switch (getEnumUserT()) {
+	public String save()
+	{
+		switch (getUserType()) {
 		case Admin:
 			Admin admin = new Admin();
 			admin.copy(theUser);
-			userM.add(admin);
+			userM.save(admin);
 			break;
 			
 		case Teacher:
 			Teacher teacher = new Teacher();
 			teacher.copy(theUser);
-			userM.add(teacher);
+			userM.save(teacher);
 			break;
 				
 		case Student:
 			Student student = new Student();
 			student.copy(theUser);
-			userM.add(student);
+			userM.save(student);
+			break;
+		
+		default:
+			//gestion err
 			break;
 		}
 		
 		theUser.reset();
+		return "users";
 	}
 	
-	public void remove(User user){
+	public String update()
+	{
+		userM.update(theUser);
+		return "users";
+	}
+	
+	public String show(AbstractUser user)
+	{
+		theUser.copy(user);
+		return "editUser";
+	}
+	
+	public void remove(AbstractUser user){
 		userM.delete(user);
 	}
 	
-	public List<String> getUsersType()
+	public List<String> getRoles()
     {
     	List<String> myList = new ArrayList<String>();
-    	for (UserType userT : UserType.values()) {
-			myList.add(userT.toString());
+    	for (Role currRole : Role.values()) {
+			myList.add(currRole.toString());
 		}
     	return myList;
     }
 
-	public UserType getEnumUserT()
+	
+	public List<AbstractUser> findAll()
 	{
-		return UserType.valueOf(userT);
+		return userM.findAll();
+	}
+	
+	public Role getUserType()
+	{
+		return Role.valueOf(role);
+	}
+	
+	public String getFormattedDate(Date date)
+	{
+		SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");//dd/MM/yyyy
+	    return sdfDate.format(date);
+	}
+	
+	public String getRole()
+	{
+		return role;
+	}
+	
+	public User newUser()
+	{
+		return new User();
+	}
+	
+	public String getRole(AbstractUser user)
+	{
+		return user.getClass().getSimpleName();
 	}
 
-	public String getUserT() {
-		return userT;
-	}
-
-	public void setUserT(String userT) {
-		this.userT = userT;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public User getTheUser() {
@@ -85,9 +129,6 @@ public class UserController {
 	public void setTheUser(User theUser) {
 		this.theUser = theUser;
 	}
-	
-	
-	
 	
 	/***
 	 * This method returns a person's with no mail.

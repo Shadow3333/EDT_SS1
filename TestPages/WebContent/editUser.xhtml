@@ -21,19 +21,10 @@
 
 <body>
 	<ui:composition template="/template/userProfile.xhtml">
-		
-		<ui:define name="user">
-			<tr>
-				<td colspan="2">
-					<c:set var="user" value="#{UserController.newUser()}" />
-				</td>
-			</tr>
-		</ui:define>
-		
 		<ui:define name="methode">
 			<tr>
 				<td colspan="2">
-					<h:commandButton action="#{UserController.save()}" value="Save" />
+					<h:commandButton action="#{UserController.update()}" value="Save" />
 				</td>
 			</tr>
 		</ui:define>

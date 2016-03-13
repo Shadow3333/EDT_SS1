@@ -1,5 +1,5 @@
 package util;
 
-public enum UserType {
+public enum Role {
 	Admin, Teacher, Student
 }
