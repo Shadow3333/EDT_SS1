@@ -63,6 +63,7 @@ public class UserController {
 	
 	public String update()
 	{
+		
 		userM.update(theUser);
 		return "users";
 	}
@@ -110,7 +111,8 @@ public class UserController {
 	
 	public User newUser()
 	{
-		return new User();
+		theUser.reset();
+		return theUser;
 	}
 	
 	public String getRole(AbstractUser user)

@@ -21,13 +21,19 @@
 
 <body>
 	<ui:composition template="/template/userProfile.xhtml">
+	
+		<ui:define name="mail">
+			<h:outputText>Mail :</h:outputText>
+	        <p:inputText id="email" value="#{user.email}" required="true"
+						 requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+		</ui:define>
+	
+		<ui:define name="label">
+			<h1>Add an User</h1>
+		</ui:define>
 		
-		<ui:define name="user">
-			<tr>
-				<td colspan="2">
-					<c:set var="user" value="#{UserController.newUser()}" />
-				</td>
-			</tr>
+		<ui:define name="resetUser">
+			<c:set var="user" value="#{UserController.newUser()}" />
 		</ui:define>
 		
 		<ui:define name="methode">

@@ -13,6 +13,7 @@ public class UserManager {
 	
 	List<AbstractUser> users;
 	
+	@SuppressWarnings("deprecation")
 	public UserManager() {
 		users = new ArrayList<AbstractUser>();
 		Admin admin1 = new Admin();
@@ -47,7 +48,11 @@ public class UserManager {
 	
 	public void update(AbstractUser user)
 	{
-		System.out.println(users.contains(user));
+		for (AbstractUser abstractUser : users) {
+			if (abstractUser.getEmail().equals(user.getEmail())) {
+				abstractUser.copy(user);
+			}
+		}
 	}
 	
 	public User find(){return null;}

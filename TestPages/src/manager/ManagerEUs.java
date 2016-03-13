@@ -14,12 +14,13 @@ import models.EU;
 public class ManagerEUs {
 	
 
-	List<EU> eus = new ArrayList<EU>();
+	List<EU> eus;
 	
 	/**
 	 * @param dao
 	 */
 	public ManagerEUs() {
+		eus = new ArrayList<EU>();
 		EU ue1 = new EU();
 		ue1.setId("aze");
 		ue1.setName("aze");
@@ -35,7 +36,7 @@ public class ManagerEUs {
 		eus.add(ue1);
 	}
 
-	public void add (EU ue){
+	public void save (EU ue){
 		EU eu = new EU();
 		eu.copy(ue);
 		eus.add(eu);

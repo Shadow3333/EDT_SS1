@@ -24,20 +24,15 @@ public class EUsController {
 		euM = new ManagerEUs();
 		theEU = new EU();
 	}
-	
-	
-
 
 	public String save() {
-			euM.add(theEU);
+			euM.save(theEU);
 			theEU.reset();
 			return "eus";
 	}
 	
 	public String remove(EU ue) {
-		System.out.println("test");
 		euM.remove(ue);
-		System.out.println(ue.getName());
 		return "eus";
 }
 		
@@ -45,13 +40,6 @@ public class EUsController {
 	public List<EU> findAll(){
 		return euM.findAll();
 	}
-	
-	public String show(String id) {
-		theEU = euM.find(id);
-		return "showPerson";
-	}
-	
-	
 	
 	public ManagerEUs getEuM() {
 		return euM;

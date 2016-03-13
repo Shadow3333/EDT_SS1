@@ -12,30 +12,22 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-
-<head>
-
-<title>Add User</title>
-
-</head>
-
 <body>
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				<h1>Add an User</h1>
-
+				
+				<ui:insert name="label"/>
+			
 				<h:form id="test">
-					<div id="methode">
-						<ui:insert name="user">
-							<c:set var="user" value="#{UserController.theUser}" />
-						</ui:insert>
-						<h:messages />
-					</div>
+					<c:set var="user" value="#{UserController.theUser}" />
+					<ui:insert name="resetUser"/>
 					
 
 					<p:panelGrid columns="2">
 					
+						<ui:insert name="mail"/>
+						
 						<h:outputText>Name :</h:outputText>
 						<p:inputText id="lastName" value="#{user.lastName}" required="true"
 						             requiredMessage=" Le nom est obligatoire."/>
@@ -50,12 +42,6 @@
 									 
 							<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 						</p:inputText>
-									 
-						<h:outputText>Mail :</h:outputText>
-	            		<p:inputText id="email" value="#{user.email}" required="true"
-								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
-								     
-						
 								     
 						<h:outputText>Website :</h:outputText>
 	            		<p:inputText id="webSite" value="#{user.webSite}" required="true"
@@ -71,12 +57,7 @@
 						</p:selectOneMenu>
 								     
 					</p:panelGrid>
-					<div id="methode">
-						<ui:insert name="methode">
-							<p>methode</p>
-						</ui:insert>
-						<h:messages />
-					</div>
+					<ui:insert name="methode"/>
 				</h:form>
 			</f:view>
 		</ui:define>

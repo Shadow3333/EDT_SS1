@@ -178,7 +178,7 @@ public abstract class AbstractUser {
 		this.email = user.getEmail();
 		this.hashPwd = user.getHashPwd();
 		this.firstName = user.getFirstName();
-		this.lastName = user.getFirstName();
+		this.lastName = user.getLastName();
 		this.birthDate = user.getBirthDate();
 		this.webSite = user.getWebSite();
 	}

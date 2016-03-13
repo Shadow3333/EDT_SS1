@@ -27,7 +27,7 @@ public class GroupEU {
 	@Id
 	private Long id;
 	@Column(nullable = true)
-	private Boolean optionnal;
+	private Boolean optional;
 	@ManyToMany
 	@CollectionTable(
 			name = "GroupEUListEU",
@@ -67,7 +67,7 @@ public class GroupEU {
 	
 	public GroupEU(Long id, Boolean optionnal) {
 		this.id = id;
-		this.optionnal = (optionnal == null)? false : optionnal;
+		this.optional = (optionnal == null)? false : optionnal;
 	}
 	
 	/**
@@ -88,14 +88,14 @@ public class GroupEU {
 	 * @return the optionnal
 	 */
 	public Boolean getOptionnal() {
-		return optionnal;
+		return optional;
 	}
 
 	/**
 	 * @param optionnal the optionnal to set
 	 */
 	public void setOptionnal(Boolean optionnal) {
-		this.optionnal = (optionnal == null)? false : optionnal;
+		this.optional = (optionnal == null)? false : optionnal;
 	}
 
 	/**
