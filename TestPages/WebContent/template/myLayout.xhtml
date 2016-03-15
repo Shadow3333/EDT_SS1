@@ -23,11 +23,7 @@
 				</h:form>
 			</ui:insert>
 		</div>
-		<div id="menu">
-			<ui:insert name="menu">
-				<ui:include src="/template/menuStudent.xhtml" />
-			</ui:insert>
-		</div>
+		
 		<ui:debug />
 		<div id="content">
 			<ui:insert name="content">
@@ -40,6 +36,10 @@
 				<span>(c) 2015</span>
 			</ui:insert>
 		</div>
-	</div>
+	</div><div id="menu">
+			<ui:insert name="menu">
+				<ui:include src="/template/menuStudent.xhtml" />
+			</ui:insert>
+		</div>
 </h:body>
 </html>

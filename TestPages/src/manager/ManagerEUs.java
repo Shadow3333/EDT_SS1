@@ -22,18 +22,25 @@ public class ManagerEUs {
 	public ManagerEUs() {
 		eus = new ArrayList<EU>();
 		EU ue1 = new EU();
-		ue1.setId("aze");
-		ue1.setName("aze");
-		ue1.setDescription("aze");
+		ue1.setId("JEE12");
+		ue1.setName("Java entreprise edition");
+		ue1.setDescription("est une EU");
 		ue1.setNbCredits(23);
 		
 		EU ue2 = new EU();
-		ue2.setId("azeaze");
-		ue2.setName("azeaze");
-		ue2.setDescription("azeaze");
+		ue2.setId("H0145");
+		ue2.setName("haskell");
+		ue2.setDescription("est surement une EU");
 		ue2.setNbCredits(852);
+		EU ue3 = new EU();
+		ue3.setId("C1678");
+		ue3.setName("Cryptographie");
+		ue3.setDescription("est possiblement une EU");
+		ue3.setNbCredits(852);
 		eus.add(ue2);
+		eus.add(ue3);
 		eus.add(ue1);
+		
 	}
 
 	public void save (EU ue){
