@@ -23,7 +23,7 @@
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				<h1>Add a educationnal background</h1>
+				<h1>Add an educational background</h1>
 
 				<h:form id="test">
 					<c:set var="eb" value="#{EducationalBackgroundbManager.theEducationalBackground}" />
@@ -61,7 +61,7 @@
 					</p:panelGrid>
 					<tr>
 						<td colspan="2"><h:commandButton
-								action="#{euController.save()}" value="Save" /></td>
+								action="#{EducationalBackgroundbManager.save()}" value="Save" /></td>
 					</tr>
 				</h:form>
 			</f:view>
