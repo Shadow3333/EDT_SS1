@@ -16,14 +16,14 @@ table {
 	white-space: pre-wrap;
 }
 
-.ui-separator { 
-   background: #A8A8A8; 
-   border: none; 
-   width: 0px; 
-   clear: none; 
-   height: 15px; 
-   margin: 0px 0px 0; 
-   box-shadow: none; 
+.ui-separator {
+	background: #A8A8A8;
+	border: none;
+	width: 0px;
+	clear: none;
+	height: 15px;
+	margin: 0px 0px 0;
+	box-shadow: none;
 }
 
 td, th {
@@ -43,6 +43,7 @@ td, th {
 	color: #000000;
 	background-color: #ececec;
 	margin-bottom: 20px;
+	display : inline-block;
 }
 
 #menu {
@@ -53,10 +54,10 @@ td, th {
 	color: #001a65;
 	background-color: #ffffff;
 	margin-left: 20px;
+
 }
 
 #content {
-	
 }
 
 #footer {
@@ -125,7 +126,6 @@ td, th {
 	border-top: 1px solid #BBBBBB;
 }
 
-.ui-panelgrid>*>tr,
-.ui-panelgrid .ui-panelgrid-cell {
-    border: none;
+.ui-panelgrid>*>tr, .ui-panelgrid .ui-panelgrid-cell {
+	border: none;
 }

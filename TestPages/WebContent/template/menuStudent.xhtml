@@ -2,18 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-		<ui:composition>
-		    <div>Menu :</div>
-		    <ul>
-		    	<li><h:link outcome="eus">TUs List</h:link></li>
-		    	<li><h:link outcome="users">Users List</h:link></li>
-		    	<li><h:link outcome="newEU">Add a TU</h:link></li>
-		    	<li><h:link outcome="newUser">Add an User</h:link></li>
-		    	<li><h:link outcome="newEducationalBackground">Add an Educational background</h:link></li>
-		    </ul>
-		</ui:composition>
+
+
+
+<ui:composition>
+	<p:menubar>
+		<p:menuitem value="TUs List" outcome="eus" icon="ui-icon-star" />
+		<p:menuitem value="Users List" outcome="users" icon="ui-icon-person" />
+		<p:submenu label="Add" icon="ui-icon-search">
+			<p:menuitem value="TU" outcome="newEU">
+			</p:menuitem>
+			<p:menuitem value="User" outcome="newUser">
+			</p:menuitem>
+			<p:menuitem value="Educational background" outcome="newEducationalBackground">
+			</p:menuitem>
+		</p:submenu>
+	</p:menubar>
+</ui:composition>
 </html>
