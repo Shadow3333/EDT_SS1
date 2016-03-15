@@ -31,7 +31,7 @@
 					<div> 
 						<h3>EUs to choose</h3>
 					    <p:selectManyCheckbox id="grid2" value="#{GroupsEUController.selectedGroupsEU}" layout="responsive" columns="3" >
-					        <f:selectItems id="truc" filterBy="TU.name" filter="true" value="#{GroupsEUController.findAllEUs()}" var="TU" itemLabel="#{TU.id} : #{TU.name}" itemValue="#{TU}" />
+					        <f:selectItems value="#{GroupsEUController.findAllEUs()}" var="TU" itemLabel="#{TU.id} : #{TU.name}" itemValue="#{TU}" />
 					    </p:selectManyCheckbox>
     				</div>
 					
