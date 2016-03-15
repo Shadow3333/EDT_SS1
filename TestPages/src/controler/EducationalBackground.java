@@ -27,6 +27,7 @@ public class EducationalBackground {
 	
 	public EducationalBackground (){
 		EBM = new EducationalBackgroundManager();
+		euM = new EUsController();
 		theEducationalBackground = new Courses();
 		theEducationalBackground.setObligatories(new GroupEU());
 		optionals = new ArrayList<EU>();
