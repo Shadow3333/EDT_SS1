@@ -32,19 +32,17 @@
 					
 						<h:outputText>Identifiant :</h:outputText>
 						<p:inputText id="id" value="#{eu.id}" required="true"
-						             requiredMessage=" Le nom est obligatoire."/>
+						             requiredMessage="An ID is needed"/>
 						             
 						<h:outputText>Nom :</h:outputText>
 						<p:inputText id="name" value="#{eu.name}" required="true"
-						             requiredMessage=" Le nom est obligatoire."/>
+						             requiredMessage="A name is needed"/>
 						 
 						 <h:outputText>Description :</h:outputText>
-						<p:inputText id="description" value="#{eu.description}" required="true"
-									 requiredMessage=" Le prénom est obligatoire."/>
+						<p:inputText id="description" value="#{eu.description}"/>
 									 
 						<h:outputText>Nombre de credits :</h:outputText>
-	            		<p:inputText id="nbCredits" value="#{eu.nbCredits}" required="true"
-								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+	            		<p:inputText id="nbCredits" value="#{eu.nbCredits}"/>
 								     
 					</p:panelGrid>
 					<tr>

@@ -14,17 +14,21 @@
 			<f:view>
 				<h1>Teaching Unit List</h1>
 
-				<p:dataTable id="table" value="#{euController.findAll()}" var="p">
+				<p:dataTable id="table" value="#{euController.findAll()}" var="eu">
+					<p:column headerText="ID">
+						<h:outputText value="#{eu.id}" />
+					</p:column>
+				
 					<p:column headerText="Nom">
-						<h:outputText value="#{p.name}" />
+						<h:outputText value="#{eu.name}" />
 					</p:column>
 
 					<p:column headerText="Description">
-						<h:outputText value="#{p.description}" />
+						<h:outputText value="#{eu.description}" />
 					</p:column>
 
 					<p:column headerText="Nombre de crédits">
-						<h:outputText value="#{p.nbCredits}" />
+						<h:outputText value="#{eu.nbCredits}" />
 					</p:column>
 					<p:column headerText="Supprimer">
 						<h:form>

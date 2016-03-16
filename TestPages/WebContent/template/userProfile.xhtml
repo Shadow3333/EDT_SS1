@@ -29,27 +29,22 @@
 						<ui:insert name="mail"/>
 						
 						<h:outputText>Name :</h:outputText>
-						<p:inputText id="lastName" value="#{user.lastName}" required="true"
-						             requiredMessage=" Le nom est obligatoire."/>
+						<p:inputText id="lastName" value="#{user.lastName}"/>
 						             
 						<h:outputText>First name :</h:outputText>
-						<p:inputText id="firstName" value="#{user.firstName}" required="true"
-						             requiredMessage=" Le nom est obligatoire."/>
+						<p:inputText id="firstName" value="#{user.firstName}"/>
 						 
-						<h:outputText>Birthday :</h:outputText>
-						<p:inputText id="birthDate" value="#{user.birthDate}" required="true"
-									 requiredMessage=" Le prénom est obligatoire.">
-									 
+						<h:outputText>Birthday (DD/MM/YYYY):</h:outputText>
+						<p:inputText id="birthDate" value="#{user.birthDate}">
 							<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 						</p:inputText>
 								     
 						<h:outputText>Website :</h:outputText>
-	            		<p:inputText id="webSite" value="#{user.webSite}" required="true"
-								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+	            		<p:inputText id="webSite" value="#{user.webSite}"/>
 								     
 						<h:outputText>Password :</h:outputText>
        					<p:inputText id="hashPwd" value="#{user.hashPwd}" type="password" required="true"
-								     requiredMessage="Veuillez spécifier votre date de naissance au format jj/mm/aaaa."/>
+								     requiredMessage="Please enter a password"/>
 						
 						<h:outputText>Role :</h:outputText>
 						<p:selectOneMenu value="#{UserController.role}">
