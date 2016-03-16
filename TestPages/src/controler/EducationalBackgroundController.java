@@ -40,12 +40,27 @@ public class EducationalBackgroundController {
 		}
 		EBM.save(theEducationalBackground);
 		init();
-		return "eus";
+		return "educationalBackgrounds";
 	}
 	
 	public String remove(Courses educationalBackground) {
 		EBM.remove(educationalBackground);
-		return "eus";
+		return "educationalBackgrounds";
+	}
+	
+	public String update()
+	{
+		EBM.update(theEducationalBackground);
+		return "educationalBackgrounds";
+	}
+	
+	public String show(Courses eb)
+	{
+		theEducationalBackground = eb;
+		for (GroupEU gEU : eb.getOptions()) {
+			optionals.addAll(gEU.getEus());
+		}
+		return "editEducationalBackground";
 	}
 		
 	public List<EU> findAllEUs()
@@ -53,6 +68,11 @@ public class EducationalBackgroundController {
 		return euM.findAll();
 	}
 
+	public List<Courses> findAll()
+	{
+		return EBM.findAll();
+	}
+	
 	public Courses getTheEducationalBackground() {
 		return theEducationalBackground;
 	}

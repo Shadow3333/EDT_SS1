@@ -57,17 +57,17 @@ public class EducationalBackgroundManager {
 		optionnal.addEU(ue3);
 		
 		EU ue4 = new EU();
-		ue3.setId("M1023");
-		ue3.setName("Communication");
-		ue3.setDescription("est possiblement une EU");
-		ue3.setNbCredits(30);
+		ue4.setId("M1023");
+		ue4.setName("Communication");
+		ue4.setDescription("est peut être une EU");
+		ue4.setNbCredits(30);
 		optionnal.addEU(ue4);
 		
 		EU ue5 = new EU();
-		ue3.setId("J1033");
-		ue3.setName("Anglais");
-		ue3.setDescription("est possiblement une EU");
-		ue3.setNbCredits(30);
+		ue5.setId("J1033");
+		ue5.setName("Anglais");
+		ue5.setDescription("peut être une EU");
+		ue5.setNbCredits(30);
 		optionnal2.addEU(ue5);
 		
 		optionnals.add(optionnal);
@@ -75,6 +75,9 @@ public class EducationalBackgroundManager {
 		
 		course.setObligatories(obligatories);
 		course.setOptions(optionnals);
+		
+		course.setId("P0123");
+		course.setName("ISL");
 		
 		courses.add(course);
 
@@ -98,5 +101,14 @@ public class EducationalBackgroundManager {
 				return course;
 		}
 		return null;
+	}
+	
+	public void update(Courses eb)
+	{
+		for (Courses currEB : courses) {
+			if (currEB.getId().equals(eb.getId())) {
+				currEB = eb;
+			}
+		}
 	}
 }

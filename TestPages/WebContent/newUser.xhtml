@@ -22,12 +22,6 @@
 <body>
 	<ui:composition template="/template/userProfile.xhtml">
 	
-		<ui:define name="mail">
-			<h:outputText>Mail :</h:outputText>
-	        <p:inputText id="email" value="#{user.email}" required="true"
-						 requiredMessage="A mail is needed"/>
-		</ui:define>
-	
 		<ui:define name="label">
 			<h1>Add an User</h1>
 		</ui:define>
@@ -36,7 +30,7 @@
 			<c:set var="user" value="#{UserController.newUser()}" />
 		</ui:define>
 		
-		<ui:define name="methode">
+		<ui:define name="method">
 			<tr>
 				<td colspan="2">
 					<h:commandButton action="#{UserController.save()}" value="Save" />

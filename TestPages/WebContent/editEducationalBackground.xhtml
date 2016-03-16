@@ -23,17 +23,13 @@
 	<ui:composition template="/template/educationalBackgroundProfile.xhtml">
 	
 		<ui:define name="label">
-			<h1>Add an Educational Background</h1>
-		</ui:define>
-		
-		<ui:define name="resetUser">
-			<c:set var="eb" value="#{EducationalBackgroundController.init()}" />
+			<h1>Edit an Educational Background</h1>
 		</ui:define>
 		
 		<ui:define name="method">
 			<tr>
 				<td colspan="2">
-					<h:commandButton action="#{EducationalBackgroundController.save()}" value="Save" />
+					<h:commandButton action="#{EducationalBackgroundController.update()}" value="Save" />
 				</td>
 			</tr>
 		</ui:define>

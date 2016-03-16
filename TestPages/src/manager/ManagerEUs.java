@@ -32,14 +32,29 @@ public class ManagerEUs {
 		ue2.setName("haskell");
 		ue2.setDescription("est surement une EU");
 		ue2.setNbCredits(852);
+		
 		EU ue3 = new EU();
 		ue3.setId("C1678");
 		ue3.setName("Cryptographie");
 		ue3.setDescription("est possiblement une EU");
 		ue3.setNbCredits(852);
+		
+		EU ue4 = new EU();
+		ue4.setId("M1023");
+		ue4.setName("Communication");
+		ue4.setDescription("est peut être une EU");
+		ue4.setNbCredits(30);
+		
+		EU ue5 = new EU();
+		ue5.setId("J1033");
+		ue5.setName("Anglais");
+		ue5.setDescription("peut être une EU");
+		ue5.setNbCredits(30);
 		eus.add(ue2);
 		eus.add(ue3);
 		eus.add(ue1);
+		eus.add(ue4);
+		eus.add(ue5);
 		
 	}
 
