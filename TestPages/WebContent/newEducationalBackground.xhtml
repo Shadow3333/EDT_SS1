@@ -26,38 +26,43 @@
 				<h1>Add an educational background</h1>
 
 				<h:form id="test">
-					<c:set var="eb" value="#{EducationalBackgroundbManager.theEducationalBackground}" />
+					<c:set var="eb" value="#{EducationalBackgroundController.theEducationalBackground}" />
+					<c:set var="eus" value="#{EducationalBackgroundController.findAllEUs()}" />
 
 					<p:panelGrid columns="2">
 
 						<h:outputText>Id :</h:outputText>
 						<p:inputText id="id" value="#{eb.id}" required="true"
-							requiredMessage=" Le nom est obligatoire." />
+							requiredMessage="An ID is needed" />
 
 						<h:outputText>Name :</h:outputText>
 						<p:inputText id="name" value="#{eb.name}" required="true"
-							requiredMessage=" Le nom est obligatoire." />
+							requiredMessage="A name is needed" />
 
 							<h:outputLabel for="menu1" value="Mandatory" />
 							<p:selectCheckboxMenu id="menu1"
-								value="#{EducationalBackgroundbManager.findAllEUs}" label="UES"
+								value="#{eb.obligatories.eus}" label="UES"
 								filter="true" filterMatchMode="startsWith"
-								panelStyle="width:250px">
-								<f:selectItems value="#{EducationalBackgroundbManager.theEducationalBackground.obligatories}" />
+								panelStyle="width:400px">
+								<f:selectItems value="#{eus}" 
+											   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
+											   itemValue="#{eu}"/>
 							</p:selectCheckboxMenu>
 
 							<h:outputLabel for="menu" value="Optional" />
 							<p:selectCheckboxMenu id="menu"
-								value="#{EducationalBackgroundbManager.findAllEUs}" label="UES"
-								filter="true" filterMatchMode="startsWith"
-								panelStyle="width:250px">
-								<f:selectItems value="#{EducationalBackgroundbManager.optionals}" />
+								value="#{EducationalBackgroundController.optionals}" label="UES"
+								filter="true"
+								panelStyle="width:400px">
+								<f:selectItems value="#{eus}" 
+											   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
+											   itemValue="#{eu}"/>
 							</p:selectCheckboxMenu>
 
 					</p:panelGrid>
 					<tr>
 						<td colspan="2"><h:commandButton
-								action="#{EducationalBackgroundbManager.save()}" value="Save" /></td>
+								action="#{EducationalBackgroundController.save()}" value="Save" /></td>
 					</tr>
 				</h:form>
 			</f:view>

@@ -12,6 +12,7 @@ public class EducationalBackgroundManager {
 	GroupEU obligatories;
 	GroupEU optionnal;
 	GroupEU optionnal2;
+	ManagerEUs euM;
 	
 	Courses course;
 
@@ -26,6 +27,8 @@ public class EducationalBackgroundManager {
 		
 		obligatories = new GroupEU();
 		optionnal = new GroupEU();
+		optionnal2 = new GroupEU();
+		course = new Courses();
 		
 		optionnals = new ArrayList<GroupEU>();
 		courses = new ArrayList<Courses>();
