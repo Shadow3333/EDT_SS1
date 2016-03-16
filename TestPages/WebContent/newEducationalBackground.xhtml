@@ -30,33 +30,29 @@
 
 					<p:panelGrid columns="2">
 
-						<h:outputText>Identifiant :</h:outputText>
+						<h:outputText>Id :</h:outputText>
 						<p:inputText id="id" value="#{eb.id}" required="true"
 							requiredMessage=" Le nom est obligatoire." />
 
-						<h:outputText>Nom :</h:outputText>
+						<h:outputText>Name :</h:outputText>
 						<p:inputText id="name" value="#{eb.name}" required="true"
 							requiredMessage=" Le nom est obligatoire." />
 
-						<h:panelGrid columns="3" cellpadding="5">
-							<h:outputLabel for="menu1" value="Obligatoire" />
+							<h:outputLabel for="menu1" value="Mandatory" />
 							<p:selectCheckboxMenu id="menu1"
 								value="#{EducationalBackgroundbManager.findAllEUs}" label="UES"
 								filter="true" filterMatchMode="startsWith"
 								panelStyle="width:250px">
 								<f:selectItems value="#{EducationalBackgroundbManager.theEducationalBackground.obligatories}" />
 							</p:selectCheckboxMenu>
-						</h:panelGrid>
 
-						<h:panelGrid columns="3" cellpadding="5">
-							<h:outputLabel for="menu" value="Optionnelles" />
+							<h:outputLabel for="menu" value="Optional" />
 							<p:selectCheckboxMenu id="menu"
 								value="#{EducationalBackgroundbManager.findAllEUs}" label="UES"
 								filter="true" filterMatchMode="startsWith"
 								panelStyle="width:250px">
 								<f:selectItems value="#{EducationalBackgroundbManager.optionals}" />
 							</p:selectCheckboxMenu>
-						</h:panelGrid>
 
 					</p:panelGrid>
 					<tr>

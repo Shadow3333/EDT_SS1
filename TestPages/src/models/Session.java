@@ -22,17 +22,23 @@ public class Session {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	@Column(nullable = false)
 	private Date date;
+	
 	@Column(nullable = true)
 	private GroupStudent groupStudent;
+	
 	@Column(nullable = true)
 	private EU eu;
+	
 	@Column(nullable = true)
 	private AbstractUser teacher;
+	
 	@Column(nullable = true)
 	@Enumerated(EnumType.STRING)
 	private LessonType type;
+	
 	@Column(nullable = false)
 	@Min(value = 1)
 	private Integer nbHour;
@@ -139,4 +145,5 @@ public class Session {
 	public void setNbHour(Integer nbHour) {
 		this.nbHour = nbHour;
 	}
+	
 }

@@ -1,6 +1,8 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -8,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.Valid;
+
+import models.AbstractUser.PhoneType;
 
 /**
  * Student extends AbsctractUser. This class is used to describe an user with student's rights.
@@ -60,5 +64,14 @@ public class Student extends AbstractUser {
 		this.groups = groups;
 	}
 	
+	
+	public void setStudent (String lastName, String firstName, String email, Date birthDate, Map<PhoneType, String> phones, String website){
+		this.setLastName(lastName);
+		this.setFirstName(firstName);
+		this.setBirthDate(birthDate);
+		this.setEmail(email);
+		this.setPhones(phones);
+		this.setWebSite(website);
+	}
 	// TODO UTILS TOOLS FOR STUDENT (ADDERS & REMOVERS)
 }

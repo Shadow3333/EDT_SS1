@@ -1,6 +1,8 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Entity;
@@ -81,6 +83,15 @@ public class Teacher extends AbstractUser {
 	 */
 	public void setCm(List<EU> cm) {
 		this.cm = cm;
+	}
+	
+	public void setTeacher (String lastName, String firstName, String email, Date birthDate, Map<PhoneType, String> phones, String website){
+		this.setLastName(lastName);
+		this.setFirstName(firstName);
+		this.setBirthDate(birthDate);
+		this.setEmail(email);
+		this.setPhones(phones);
+		this.setWebSite(website);
 	}
 	
 	// TODO UTILS TOOLS FOR TEACHER (ADDERS & REMOVERS)
