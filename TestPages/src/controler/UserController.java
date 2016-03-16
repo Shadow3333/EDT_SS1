@@ -8,9 +8,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import manager.EducationalBackgroundManager;
 import manager.UserManager;
 import models.AbstractUser;
 import models.Admin;
+import models.Courses;
 import models.Student;
 import models.Teacher;
 import models.User;
@@ -21,14 +23,19 @@ import util.Role;
 public class UserController {
 	
 	UserManager userM;
-	User theUser;
+	EducationalBackgroundManager ebM;
+	AbstractUser theUser;
+	Courses eb;
 	String role;
+	
 	
 	List<User> users = new ArrayList<User>();
 	
 	public UserController(){
 		userM = new UserManager();
+		ebM = new EducationalBackgroundManager();
 		theUser = new User();
+		eb = new Courses();
 	}
 	
 	public String save()
@@ -86,6 +93,17 @@ public class UserController {
 		}
     	return myList;
     }
+	
+	public List<Courses> findAllEBs()
+	{
+		return ebM.findAll();
+	}
+	
+	public String doER(AbstractUser user)
+	{
+		theUser = user;
+		return "educationalRegistration";
+	}
 
 	
 	public List<AbstractUser> findAll()
@@ -109,7 +127,7 @@ public class UserController {
 		return role;
 	}
 	
-	public User newUser()
+	public AbstractUser newUser()
 	{
 		theUser.reset();
 		return theUser;
@@ -124,12 +142,20 @@ public class UserController {
 		this.role = role;
 	}
 
-	public User getTheUser() {
+	public AbstractUser getTheUser() {
 		return theUser;
 	}
 
 	public void setTheUser(User theUser) {
 		this.theUser = theUser;
+	}
+
+	public Courses getEb() {
+		return eb;
+	}
+
+	public void setEb(Courses eb) {
+		this.eb = eb;
 	}
 	
 	/***
