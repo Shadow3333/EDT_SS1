@@ -35,6 +35,8 @@ public class SessionManager {
 		courses = new ArrayList<Courses>();
 		sessions = new ArrayList<Session>();
 		
+		session = new Session();
+		
 		group1 = new GroupStudent();
 		group2 = new GroupStudent();
 		

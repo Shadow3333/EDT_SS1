@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="/template/myLayout.xhtml">
+		<ui:define name="content">
+			<f:view>
+				<h1>Session List</h1>
+
+				<h:form>
+					<p:dataTable var="session" value="#{sessionController.findAll()}"
+						widgetVar="sessionTable"
+						emptyMessage="No sessions found with given criteria">
+
+						<p:column filterBy="#{session.date}" headerText="Date"
+							footerText="contains">
+							<h:outputText value="#{session.date}" />
+						</p:column>
+
+						<p:column filterBy="#{session.teacher}" headerText="Teacher"
+							footerText="lte">
+							<h:outputText value="#{session.teacher}" />
+						</p:column>
+
+						<p:column filterBy="#{session.type}" headerText="type"
+							footerText="equals">
+							<f:facet name="filter">
+								<p:selectOneButton onchange="PF('sessionTable').filter()">
+									<f:converter converterId="javax.faces.Boolean" />
+									<f:selectItem itemLabel="CM" itemValue="" />
+									<f:selectItem itemLabel="TD" itemValue="true" />
+									<f:selectItem itemLabel="TP" itemValue="false" />
+								</p:selectOneButton>
+							</f:facet>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
