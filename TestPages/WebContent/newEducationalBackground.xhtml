@@ -47,6 +47,7 @@
 								<f:selectItems value="#{eus}" 
 											   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
 											   itemValue="#{eu}"/>
+								<f:converter converterId="TUConverter" />
 							</p:selectCheckboxMenu>
 
 							<h:outputLabel for="menu" value="Optional" />
@@ -57,6 +58,7 @@
 								<f:selectItems value="#{eus}" 
 											   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
 											   itemValue="#{eu}"/>
+								<f:converter converterId="TUConverter" />
 							</p:selectCheckboxMenu>
 
 					</p:panelGrid>

@@ -57,12 +57,13 @@ public class ManagerEUs {
 		return eus;
 	}
 	
-	public EU find (String id){
-		for ( EU ue : eus){
-			if (ue.getId() == id)
-				return ue;
+	public EU find(String id) {
+		for (EU eu : eus) {
+			if (eu.getId().equals(id)) {
+				return eu;
+			}
 		}
-		return null;
-	}
+        return null;
+    }
 	
 }

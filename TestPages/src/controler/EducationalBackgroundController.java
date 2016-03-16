@@ -33,12 +33,11 @@ public class EducationalBackgroundController {
 
 	public String save() {
 		GroupEU tempo;
-		System.out.println(optionals.get(0).getName()); 
-//		for (EU eu : optionals) {
-//			tempo = new GroupEU();
-//			tempo.addEU(eu);
-//			theEducationalBackground.addOptions(tempo);
-//		}
+		for (EU eu : optionals) {
+			tempo = new GroupEU();
+			tempo.addEU(eu);
+			theEducationalBackground.addOptions(tempo);
+		}
 		EBM.save(theEducationalBackground);
 		init();
 		return "eus";
