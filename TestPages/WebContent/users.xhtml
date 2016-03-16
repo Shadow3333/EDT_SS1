@@ -35,6 +35,14 @@
 						<h:outputText value="#{UserController.getRole(p)}" />
 					</p:column>
 					
+					<p:column headerText="Educational Registration">
+						<h:form>
+							<p:commandButton value="ER" id="educationalRegistration"
+								action="#{UserController.doER(p)}"
+								styleClass="ui-priority-primary" />
+						</h:form>
+					</p:column>
+					
 					<p:column headerText="Edit">
 						<h:form>
 							<p:commandButton value="E" id="edit"
