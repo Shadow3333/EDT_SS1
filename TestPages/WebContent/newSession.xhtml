@@ -14,9 +14,7 @@
 
 
 <head>
-
 <title>Add a session</title>
-
 </head>
 
 <body>
@@ -28,15 +26,14 @@
 				<h:form id="test">
 					<c:set var="session" value="#{sessionController.theSession}" />
 
-					<p:panelGrid columns="2">
 
+					<p:panelGrid columns="2">
 						<p:outputLabel for="date" value="Date :" />
 						<p:calendar id="date" value="#{session.date}" />
 
 						<p:outputLabel for="UES" value="UE :" />
 						<p:selectOneListbox id="UES"
-							value="#{sessionController.findAllEUS()}"
-							var="ues" filter="true"
+							value="#{sessionController.findAllEUS()}" var="ues" filter="true"
 							filterMatchMode="contains">
 							<f:selectItems value="#{session.eu}" var="eu"
 								itemLabel="#{eu.id} : #{eu.name}" itemValue="#{eu}" />
@@ -50,19 +47,20 @@
 						</p:selectOneListbox>
 
 						<h:outputLabel for="menu" value="Groupes :" />
-						<p:selectCheckboxMenu id="menu" value="#{sessionController.findAllGroups()}"
-							label="Groupes" filter="true" filterMatchMode="startsWith"
+						<p:selectCheckboxMenu id="menu"
+							value="#{sessionController.findAllGroups()}" label="Groupes"
+							filter="true" filterMatchMode="startsWith"
 							panelStyle="width:250px">
 							<f:selectItems value="#{session.groupStudent}" />
 						</p:selectCheckboxMenu>
 
 						<p:outputLabel for="teachers" value="Enseignant :" />
 						<p:selectOneListbox id="teachers"
-							value="#{sessionController.findAllTeachers()}"
-							 var="teachers" filter="true"
-							filterMatchMode="contains">
+							value="#{sessionController.findAllTeachers()}" var="teachers"
+							filter="true" filterMatchMode="contains">
 							<f:selectItems value="#{session.teacher}" var="teacher"
-								itemLabel="#{teacher.lastName} : #{teacher.firstName}" itemValue="#{teacher}" />
+								itemLabel="#{teacher.lastName} : #{teacher.firstName}"
+								itemValue="#{teacher}" />
 						</p:selectOneListbox>
 
 						<h:outputText>Durée :</h:outputText>
@@ -72,7 +70,7 @@
 					</p:panelGrid>
 					<tr>
 						<td colspan="2"><h:commandButton
-								action="#{sessionController.save()}" value="Save" /></td>
+								action="#{sessionController.save(session)}" value="Save" /></td>
 					</tr>
 				</h:form>
 			</f:view>

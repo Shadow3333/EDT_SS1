@@ -12,14 +12,18 @@
 
 <ui:composition>
 	<p:menubar>
-		<p:menuitem value="EBs List" outcome="educationalBackgrounds" icon="ui-icon-person" />
+		<p:menuitem value="EBs List" outcome="educationalBackgrounds"
+			icon="ui-icon-person" />
 		<p:menuitem value="TUs List" outcome="eus" icon="ui-icon-star" />
 		<p:menuitem value="Users List" outcome="users" icon="ui-icon-person" />
+		<p:menuitem value="Session List" outcome="sessions" icon="ui-icon-person" />
+
 		<p:submenu label="Add" icon="ui-icon-search">
-			<p:menuitem value="TU" outcome="newEU"/>
-			<p:menuitem value="User" outcome="newUser"/>
-			<p:menuitem value="Educational background" outcome="newEducationalBackground"/>
-			<p:menuitem value="Session" outcome="newSession"/>
+			<p:menuitem value="TU" outcome="newEU" />
+			<p:menuitem value="User" outcome="newUser" />
+			<p:menuitem value="Educational background"
+				outcome="newEducationalBackground" />
+			<p:menuitem value="Session" outcome="newSession" />
 		</p:submenu>
 	</p:menubar>
 </ui:composition>

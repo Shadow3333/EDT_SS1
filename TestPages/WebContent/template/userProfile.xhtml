@@ -16,45 +16,43 @@
 	<ui:composition template="/template/myLayout.xhtml">
 		<ui:define name="content">
 			<f:view>
-				
-				<ui:insert name="label"/>
-			
+
+				<ui:insert name="label" />
+
 				<h:form id="test">
 					<c:set var="user" value="#{UserController.theUser}" />
-					<ui:insert name="resetUser"/>
-					
+					<ui:insert name="resetUser" />
+
 
 					<p:panelGrid columns="2">
-					
+
 						<h:outputText>Mail :</h:outputText>
-				        <p:inputText id="email" value="#{user.email}" required="true"
-									 requiredMessage="A mail is needed"/>
-						
+						<p:inputText id="email" value="#{user.email}" required="true"
+							requiredMessage="A mail is needed" />
+
 						<h:outputText>Name :</h:outputText>
-						<p:inputText id="lastName" value="#{user.lastName}"/>
-						             
+						<p:inputText id="lastName" value="#{user.lastName}" />
+
 						<h:outputText>First name :</h:outputText>
-						<p:inputText id="firstName" value="#{user.firstName}"/>
-						 
-						<h:outputText>Birthday (DD/MM/YYYY):</h:outputText>
-						<p:inputText id="birthDate" value="#{user.birthDate}">
-							<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-						</p:inputText>
-								     
-						<h:outputText>Website :</h:outputText>
-	            		<p:inputText id="webSite" value="#{user.webSite}"/>
-								     
-						<h:outputText>Password :</h:outputText>
-       					<p:inputText id="hashPwd" value="#{user.hashPwd}" type="password" required="true"
-								     requiredMessage="Please enter a password"/>
+						<p:inputText id="firstName" value="#{user.firstName}" />
 						
+						<p:outputLabel for="birthDate" value="Birthdate :" />
+						<p:calendar id="birthDate" value="#{user.birthDate}" />
+
+						<h:outputText>Website :</h:outputText>
+						<p:inputText id="webSite" value="#{user.webSite}" />
+
+						<h:outputText>Password :</h:outputText>
+						<p:inputText id="hashPwd" value="#{user.hashPwd}" type="password"
+							required="true" requiredMessage="Please enter a password" />
+
 						<h:outputText>Role :</h:outputText>
 						<p:selectOneMenu value="#{UserController.role}">
 							<f:selectItems value="#{UserController.getRoles()}" />
 						</p:selectOneMenu>
-								     
+
 					</p:panelGrid>
-					<ui:insert name="method"/>
+					<ui:insert name="method" />
 				</h:form>
 			</f:view>
 		</ui:define>

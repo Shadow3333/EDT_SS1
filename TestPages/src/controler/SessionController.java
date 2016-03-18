@@ -22,6 +22,7 @@ public class SessionController {
 	EUsController euM;
 
 
+
 	public SessionController(){
 		sessionM = new SessionManager();
 		sessions = new ArrayList<Session>();
@@ -59,6 +60,16 @@ public class SessionController {
 	
 	public Session getTheSession() {
 		return theSession;
+	}
+
+
+	public EUsController getEuM() {
+		return euM;
+	}
+
+
+	public void setEuM(EUsController euM) {
+		this.euM = euM;
 	}
 
 
