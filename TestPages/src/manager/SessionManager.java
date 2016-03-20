@@ -1,10 +1,13 @@
 package manager;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.openejb.jee.was.v6.ejb.SessionEnum;
 
 import models.AbstractUser.PhoneType;
 import models.Courses;
@@ -24,7 +27,6 @@ public class SessionManager {
 	GroupStudent group1;
 	GroupStudent group2;
 	
-	Session session;
 	List<Session> sessions;
 	
 	
@@ -35,12 +37,19 @@ public class SessionManager {
 		courses = new ArrayList<Courses>();
 		sessions = new ArrayList<Session>();
 		
-		session = new Session();
 		
 		group1 = new GroupStudent();
 		group2 = new GroupStudent();
 		
 		Date birthDate = new Date();
+		Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DATE, 24);
+        cal.set(Calendar.YEAR, 1993);
+        cal.set(Calendar.HOUR,13);
+        cal.set(Calendar.MINUTE,45);
+        cal.set(Calendar.SECOND,52);
+        birthDate = cal.getTime();
 		Map<PhoneType, String> phones = new HashMap<PhoneType, String>();
 		
 		Teacher teacher1 = new Teacher();
@@ -87,6 +96,15 @@ public class SessionManager {
 		
 		students.add(group1);
 		students.add(group2);
+		
+		Session sess = new Session();
+		sess.setDate(birthDate);
+		sess.setEu(ue2);
+		sess.setNbHour(99999);
+		sess.setGroupStudent(group2);
+		sess.setTeacher(student);
+		sess.setType(EU.LessonType.CM);
+		sessions.add(sess);
 	}
 		
 	public void save (Session session){
@@ -120,4 +138,13 @@ public class SessionManager {
 		}
 		return null;
 	}
+	
+	public Teacher find(String email) {
+		for (Teacher teacher : teachers) {
+			if (teacher.getEmail().equals(email)) {
+				return teacher;
+			}
+		}
+        return null;
+    }
 }

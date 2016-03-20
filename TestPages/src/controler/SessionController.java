@@ -1,6 +1,5 @@
 package controler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -8,6 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import manager.SessionManager;
 import models.EU;
+import models.EU.LessonType;
 import models.GroupStudent;
 import models.Session;
 import models.Teacher;
@@ -18,28 +18,30 @@ public class SessionController {
 	
 	SessionManager sessionM;
 	Session theSession;
-	List<Session> sessions;
 	EUsController euM;
-
 
 
 	public SessionController(){
 		sessionM = new SessionManager();
-		sessions = new ArrayList<Session>();
 		theSession = new Session();
 		euM = new EUsController();
 	}
 	
 	
-	public String save(Session session) {
-		sessions.add(session);
-		sessionM.save(session);
+	public String save() {
+		sessionM.save(theSession);
+		theSession = new Session();
 		return "sessions";
 	}
 	
 	public String remove(Session session) {
 		sessionM.remove(session);
 		return "sessions";
+	}
+	
+	public LessonType[] getLessonType()
+	{
+		return LessonType.values();
 	}
 	
 	public List<Session> findAll(){
@@ -75,16 +77,6 @@ public class SessionController {
 
 	public void setTheSession(Session theSession) {
 		this.theSession = theSession;
-	}
-
-
-	public List<Session> getSessions() {
-		return sessions;
-	}
-
-
-	public void setSessions(List<Session> sessions) {
-		this.sessions = sessions;
 	}
 
 }

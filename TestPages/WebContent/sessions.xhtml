@@ -15,31 +15,33 @@
 				<h1>Session List</h1>
 
 				<h:form>
-					<p:dataTable var="session" value="#{sessionController.findAll()}"
-						widgetVar="sessionTable"
-						emptyMessage="No sessions found with given criteria">
+					<p:dataTable value="#{sessionController.findAll()}" var="currSession"
+						emptyMessage="No sessions found with given criteria"
+						widgetVar="sessionTable">
+						
 
-						<p:column filterBy="#{session.date}" headerText="Date"
-							footerText="contains">
-							<h:outputText value="#{session.date}" />
+						<p:column filterBy="#{currSession.date}" headerText="Date">
+							<h:outputText value="#{currSession.date}" >
+								<f:convertDateTime pattern="MM/dd/yyyy" />
+							</h:outputText>
 						</p:column>
 
-						<p:column filterBy="#{session.teacher}" headerText="Teacher"
-							footerText="lte">
-							<h:outputText value="#{session.teacher}" />
+						<p:column filterBy="#{currSession.teacher}" headerText="Teacher">
+							<h:outputText value="#{currSession.teacher.lastName}" />
 						</p:column>
 
-						<p:column filterBy="#{session.type}" headerText="type"
-							footerText="equals">
-							<f:facet name="filter">
-								<p:selectOneButton onchange="PF('sessionTable').filter()">
-									<f:converter converterId="javax.faces.Boolean" />
-									<f:selectItem itemLabel="CM" itemValue="" />
-									<f:selectItem itemLabel="TD" itemValue="true" />
-									<f:selectItem itemLabel="TP" itemValue="false" />
-								</p:selectOneButton>
-							</f:facet>
-						</p:column>
+						<p:column filterBy="#{currSession.type}" 
+								  headerText="Type"
+								  filterMatchMode="in">
+				            <f:facet name="filter">
+				                <p:selectCheckboxMenu label="by" onchange="PF('sessionTable').filter()"
+				                 panelStyle="width:125px" scrollHeight="150">
+				                    <f:selectItems value="#{sessionController.getLessonType()}" />
+				                </p:selectCheckboxMenu>
+				            </f:facet>
+				            <h:outputText value="#{currSession.type}" />
+				        </p:column>
+
 					</p:dataTable>
 				</h:form>
 			</f:view>

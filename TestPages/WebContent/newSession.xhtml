@@ -24,53 +24,49 @@
 				<h1>Add a session</h1>
 
 				<h:form id="test">
-					<c:set var="session" value="#{sessionController.theSession}" />
+					<c:set var="currSession" value="#{sessionController.theSession}" />
 
 
 					<p:panelGrid columns="2">
 						<p:outputLabel for="date" value="Date :" />
-						<p:calendar id="date" value="#{session.date}" />
+						<p:calendar id="date" value="#{currSession.date}" />
 
 						<p:outputLabel for="UES" value="UE :" />
-						<p:selectOneListbox id="UES"
-							value="#{sessionController.findAllEUS()}" var="ues" filter="true"
+						<p:selectOneListbox id="UES" filter="true" value="#{currSession.eu}"
 							filterMatchMode="contains">
-							<f:selectItems value="#{session.eu}" var="eu"
-								itemLabel="#{eu.id} : #{eu.name}" itemValue="#{eu}" />
+							<f:selectItems value="#{sessionController.findAllEUS()}" 
+										   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
+										   itemValue="#{eu}"/>
+							<f:converter converterId="TUConverter" />
 						</p:selectOneListbox>
 
 						<p:outputLabel for="type" value="Type :" />
-						<p:selectOneListbox id="type" value="#{session.type}">
-							<f:selectItem itemLabel="CM" itemValue="1" />
-							<f:selectItem itemLabel="TD" itemValue="2" />
-							<f:selectItem itemLabel="TP" itemValue="3" />
+						<p:selectOneListbox id="type" value="#{currSession.type}">
+							<f:selectItem itemLabel="CM" itemValue="CM" />
+							<f:selectItem itemLabel="TD" itemValue="TD" />
+							<f:selectItem itemLabel="TP" itemValue="TP" />
 						</p:selectOneListbox>
 
-						<h:outputLabel for="menu" value="Groupes :" />
-						<p:selectCheckboxMenu id="menu"
-							value="#{sessionController.findAllGroups()}" label="Groupes"
-							filter="true" filterMatchMode="startsWith"
-							panelStyle="width:250px">
-							<f:selectItems value="#{session.groupStudent}" />
-						</p:selectCheckboxMenu>
+						
 
-						<p:outputLabel for="teachers" value="Enseignant :" />
+						<p:outputLabel for="teachers" value="Teacher :" />
 						<p:selectOneListbox id="teachers"
-							value="#{sessionController.findAllTeachers()}" var="teachers"
+							value="#{currSession.teacher}"
 							filter="true" filterMatchMode="contains">
-							<f:selectItems value="#{session.teacher}" var="teacher"
-								itemLabel="#{teacher.lastName} : #{teacher.firstName}"
-								itemValue="#{teacher}" />
+							<f:selectItems value="#{sessionController.findAllTeachers()}" 
+								var="teacher" itemValue="#{teacher}"
+								itemLabel="#{teacher.lastName} : #{teacher.firstName}" />
+							<f:converter converterId="TeacherConverter" />
 						</p:selectOneListbox>
 
-						<h:outputText>Durée :</h:outputText>
-						<p:inputText id="nbHour" value="#{session.nbHour}" required="true"
+						<h:outputText>Duration :</h:outputText>
+						<p:inputText id="nbHour" value="#{currSession.nbHour}" required="true"
 							requiredMessage=" Le nombre d'heure est obligatoire." />
 
 					</p:panelGrid>
 					<tr>
 						<td colspan="2"><h:commandButton
-								action="#{sessionController.save(session)}" value="Save" /></td>
+							action="#{sessionController.save()}" value="Save" /></td>
 					</tr>
 				</h:form>
 			</f:view>
