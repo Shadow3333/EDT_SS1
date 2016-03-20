@@ -13,6 +13,8 @@ import manager.UserManager;
 import models.AbstractUser;
 import models.Admin;
 import models.Courses;
+import models.EU;
+import models.GroupEU;
 import models.Student;
 import models.Teacher;
 import models.User;
@@ -27,7 +29,7 @@ public class UserController {
 	AbstractUser theUser;
 	Courses eb;
 	String role;
-	
+	List<EU> optionals;
 	
 	List<User> users = new ArrayList<User>();
 	
@@ -96,7 +98,11 @@ public class UserController {
 	
 	public List<Courses> findAllEBs()
 	{
-		return ebM.findAll();
+		List<Courses> list = ebM.findAll();
+		if (list.isEmpty() == false) {
+			eb = list.get(0);
+		}
+		return list;
 	}
 	
 	public String doER(AbstractUser user)
@@ -104,7 +110,30 @@ public class UserController {
 		theUser = user;
 		return "educationalRegistration";
 	}
-
+	
+	public List<EU> getOptionals()
+    {
+    	return eb.getEUs();
+    }
+	
+	public String saveER()
+	{
+		if (theUser.getClass().equals(Student.class)) {
+			List<GroupEU> listGrEU = new ArrayList<GroupEU>();
+			listGrEU.add(eb.getObligatories());
+			GroupEU tempo;
+			for (EU eu : optionals) {
+				tempo = new GroupEU();
+				tempo.addEU(eu);
+				listGrEU.add(tempo);
+			}
+			((Student)theUser).setGroups(listGrEU);
+			((Student)theUser).setIdCourses(eb.getId());
+			optionals = new ArrayList<EU>();
+			return "educationalRegistration";
+		}
+		return "errUser";
+	}
 	
 	public List<AbstractUser> findAll()
 	{
@@ -156,6 +185,10 @@ public class UserController {
 
 	public void setEb(Courses eb) {
 		this.eb = eb;
+	}
+
+	public void setOptionals(List<EU> optionals) {
+		this.optionals = optionals;
 	}
 	
 	/***

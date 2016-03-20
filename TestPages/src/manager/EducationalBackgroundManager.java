@@ -116,7 +116,7 @@ public class EducationalBackgroundManager {
 	
 	public Courses find (String id){
 		for ( Courses course : courses){
-			if (course.getId() == id)
+			if (course.getId().equals(id))
 				return course;
 		}
 		return null;

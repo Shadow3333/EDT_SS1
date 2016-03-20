@@ -22,4 +22,8 @@
 		<managed-bean-class>controler.SessionController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<converter>
+		<converter-id>CoursesConverter</converter-id>
+		<converter-class>util.CoursesConverter</converter-class>
+	</converter>
 </faces-config>
