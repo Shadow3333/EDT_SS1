@@ -29,6 +29,7 @@ public class SessionController {
 	
 	
 	public String save() {
+		theSession.getDate().setHours(12);
 		sessionM.save(theSession);
 		theSession = new Session();
 		return "sessions";

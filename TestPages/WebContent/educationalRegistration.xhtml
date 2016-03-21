@@ -52,7 +52,7 @@
 						<p:selectCheckboxMenu id="menu"
 							value="#{UserController.optionals}" label="UES"
 							filter="true" panelStyle="width:400px">
-							<f:selectItems value="#{UserController.getOptionals()}" 
+							<f:selectItems value="#{UserController.getEBOptionals()}" 
 										   var="eu" itemLabel="#{eu.id} : #{eu.name}" 
 										   itemValue="#{eu}"/>
 							<f:converter converterId="TUConverter" />

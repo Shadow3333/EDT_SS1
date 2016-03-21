@@ -9,50 +9,38 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
 	<h:form>
-		<p:growl id="messages" showDetail="true" />
-
-		<h:panelGrid columnClasses="value">
-			<h3 style="margin-top: 0">Editable Schedule</h3>
-			<p:schedule id="schedule" value="#{scheduleView.eventModel}"
-				widgetVar="myschedule" timeZone="GMT+2">
-
-				<p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}"
-					update="eventDetails" oncomplete="PF('eventDialog').show();" />
-				<p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}"
-					update="eventDetails" oncomplete="PF('eventDialog').show();" />
-				<p:ajax event="eventMove" listener="#{scheduleView.onEventMove}"
-					update="messages" />
-				<p:ajax event="eventResize" listener="#{scheduleView.onEventResize}"
-					update="messages" />
-
-			</p:schedule>
-		</h:panelGrid>
-
-		<p:dialog widgetVar="eventDialog" header="Event Details"
-			showEffect="clip" hideEffect="clip">
-			<h:panelGrid id="eventDetails" columns="2">
-				<p:outputLabel for="title" value="Titles:" />
-				<p:inputText id="title" value="#{scheduleView.event.title}"
-					required="true" />
-
-				<p:outputLabel for="from" value="From:" />
-				<p:calendar id="from" value="#{scheduleView.event.startDate}"
-					timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
-
-				<p:outputLabel for="to" value="To:" />
-				<p:calendar id="to" value="#{scheduleView.event.endDate}"
-					timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
-
-				<p:outputLabel for="allDay" value="All Day:" />
-				<h:selectBooleanCheckbox id="allDay"
-					value="#{scheduleView.event.allDay}" />
-
-				<p:commandButton type="reset" value="Reset" />
-				<p:commandButton id="addButton" value="Save"
-					actionListener="#{scheduleView.addEvent}"
-					oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-			</h:panelGrid>
-		</p:dialog>
+		<ui:composition template="/template/userProfile.xhtml">
+			<ui:define name="content">
+				<p:growl id="messages" showDetail="true" />
+		
+				<h:panelGrid columnClasses="value">
+			        <h3 style="margin-top: 0">Editable Schedule</h3>
+			        <p:schedule id="schedule" value="#{ScheduleController.eventModel}" 
+			                    widgetVar="myschedule" timeZone="GMT+1"
+			                    draggable="false" resizable="false">
+				        <p:ajax event="eventSelect" 
+				        		listener="#{ScheduleController.onEventSelect}"
+				        		update="eventDetails"
+				        		oncomplete="PF('eventDialog').show();" />
+			        </p:schedule>
+			        <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+			        <h:panelGrid id="eventDetails" columns="2">
+			            <p:outputLabel for="title" value="Details :" />
+			            <p:outputLabel id="title" style="width: 150px;"
+			            			   value="#{ScheduleController.event.title}" required="true" autoResize="false"/>
+			 
+			            <p:outputLabel for="from" value="From:" />
+			            <p:outputLabel id="from" value="#{ScheduleController.event.startDate}" />
+			            
+			 
+			            <p:outputLabel for="to" value="To:" />
+			            <p:outputLabel id="to" value="#{ScheduleController.event.endDate}" pattern="dd/MM/yyyy HH:mm"/>
+			 
+			        </h:panelGrid>
+			    </p:dialog>
+		        </h:panelGrid>
+		    </ui:define>
+        </ui:composition>
 	</h:form>
 </h:body>
 </html>

@@ -11,8 +11,6 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui">
 
-
-
 <head>
 
 <title>Add User</title>
@@ -27,7 +25,7 @@
 		</ui:define>
 		
 		<ui:define name="resetUser">
-			<c:set var="user" value="#{UserController.newUser()}" />
+			<h:inputHidden value="#{UserController.newUser()}" />
 		</ui:define>
 		
 		<ui:define name="method">

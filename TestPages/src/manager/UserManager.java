@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.AbstractUser;
-import models.Admin;
+import models.Student;
 import models.Teacher;
 import models.User;
 
@@ -16,7 +16,7 @@ public class UserManager {
 	@SuppressWarnings("deprecation")
 	public UserManager() {
 		users = new ArrayList<AbstractUser>();
-		Admin admin1 = new Admin();
+		Student admin1 = new Student();
 		admin1.setBirthDate(new Date("11/11/1111"));
 		admin1.setEmail("mail@mail.mail");
 		admin1.setFirstName("Jean");
@@ -50,7 +50,7 @@ public class UserManager {
 	{
 		for (AbstractUser abstractUser : users) {
 			if (abstractUser.getEmail().equals(user.getEmail())) {
-				abstractUser.copy(user);
+				abstractUser = user;
 			}
 		}
 	}

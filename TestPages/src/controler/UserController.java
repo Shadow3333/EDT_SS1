@@ -19,6 +19,7 @@ import models.Student;
 import models.Teacher;
 import models.User;
 import util.Role;
+import util.UserException;
 
 @ManagedBean(name = "UserController")
 @SessionScoped
@@ -36,44 +37,53 @@ public class UserController {
 	public UserController(){
 		userM = new UserManager();
 		ebM = new EducationalBackgroundManager();
-		theUser = new User();
+		theUser = new Admin();
 		eb = new Courses();
+		optionals = new ArrayList<EU>();
 	}
 	
 	public String save()
 	{
+		AbstractUser user = roleToObject();
+		userM.save(user);
+		theUser = new Admin();
+		return "users";
+	}
+	
+	public AbstractUser roleToObject()
+	{
+		AbstractUser user = null;
 		switch (getUserType()) {
 		case Admin:
-			Admin admin = new Admin();
-			admin.copy(theUser);
-			userM.save(admin);
+			user = new Admin();
 			break;
 			
 		case Teacher:
-			Teacher teacher = new Teacher();
-			teacher.copy(theUser);
-			userM.save(teacher);
+			user = new Teacher();
 			break;
 				
 		case Student:
-			Student student = new Student();
-			student.copy(theUser);
-			userM.save(student);
+			user = new Student();
 			break;
 		
 		default:
 			//gestion err
-			break;
 		}
-		
-		theUser.reset();
-		return "users";
+		user.setEmail(theUser.getEmail());
+		user.setPassword(theUser.getHashPwd());
+		user.setFirstName(theUser.getFirstName());
+		user.setLastName(theUser.getLastName());
+		user.setBirthDate(theUser.getBirthDate());
+		user.setWebSite(theUser.getWebSite());
+		user.setPhones(theUser.getPhones());
+		return user;
 	}
 	
 	public String update()
 	{
-		
-		userM.update(theUser);
+		AbstractUser user = roleToObject();
+		userM.update(user);
+		theUser = new Admin();
 		return "users";
 	}
 	
@@ -96,8 +106,11 @@ public class UserController {
     	return myList;
     }
 	
-	public List<Courses> findAllEBs()
+	public List<Courses> findAllEBs() throws UserException
 	{
+		if (theUser == null) {
+			throw new UserException();
+		}
 		List<Courses> list = ebM.findAll();
 		if (list.isEmpty() == false) {
 			eb = list.get(0);
@@ -111,13 +124,18 @@ public class UserController {
 		return "educationalRegistration";
 	}
 	
-	public List<EU> getOptionals()
+	public List<EU> getEBOptionals()
     {
     	return eb.getEUs();
     }
 	
-	public String saveER()
+	public String saveER() throws UserException
 	{
+		
+		if (theUser == null) {
+			optionals = new ArrayList<EU>();
+			return "users";
+		}
 		if (theUser.getClass().equals(Student.class)) {
 			List<GroupEU> listGrEU = new ArrayList<GroupEU>();
 			listGrEU.add(eb.getObligatories());
@@ -130,13 +148,18 @@ public class UserController {
 			((Student)theUser).setGroups(listGrEU);
 			((Student)theUser).setIdCourses(eb.getId());
 			optionals = new ArrayList<EU>();
-			return "educationalRegistration";
+			return "users";
 		}
+		optionals = new ArrayList<EU>();
 		return "errUser";
+		
 	}
 	
 	public List<AbstractUser> findAll()
 	{
+		for (AbstractUser eu : userM.findAll()) {
+			System.out.println(eu.getEmail() + " : " + eu.getClass().getSimpleName());
+		}
 		return userM.findAll();
 	}
 	
@@ -158,7 +181,7 @@ public class UserController {
 	
 	public AbstractUser newUser()
 	{
-		theUser.reset();
+		theUser = new Admin();
 		return theUser;
 	}
 	
@@ -189,6 +212,10 @@ public class UserController {
 
 	public void setOptionals(List<EU> optionals) {
 		this.optionals = optionals;
+	}
+
+	public List<EU> getOptionals() {
+		return optionals;
 	}
 	
 	/***

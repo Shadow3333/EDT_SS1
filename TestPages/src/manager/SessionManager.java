@@ -43,12 +43,11 @@ public class SessionManager {
 		
 		Date birthDate = new Date();
 		Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.MONTH, 2);
         cal.set(Calendar.DATE, 24);
-        cal.set(Calendar.YEAR, 1993);
-        cal.set(Calendar.HOUR,13);
-        cal.set(Calendar.MINUTE,45);
-        cal.set(Calendar.SECOND,52);
+        cal.set(Calendar.YEAR, 2016);
+        cal.set(Calendar.HOUR,11);
+        cal.set(Calendar.MINUTE, 00);
         birthDate = cal.getTime();
 		Map<PhoneType, String> phones = new HashMap<PhoneType, String>();
 		
@@ -100,7 +99,7 @@ public class SessionManager {
 		Session sess = new Session();
 		sess.setDate(birthDate);
 		sess.setEu(ue2);
-		sess.setNbHour(99999);
+		sess.setNbHour(2);
 		sess.setGroupStudent(group2);
 		sess.setTeacher(student);
 		sess.setType(EU.LessonType.CM);
